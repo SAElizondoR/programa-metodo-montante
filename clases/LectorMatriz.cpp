@@ -33,10 +33,10 @@ std::vector<std::vector<int>> LectorMatriz::leerMatriz() {
         std::string linea_archivo;
         std::getline(archivo, linea_archivo);
 
-        std::istringstream flujo_linea_archivo(linea_archivo);
+        std::istringstream flujo_linea_archivo(linea_archivo);  // crea un flujo a partir de la línea
         std::vector<int> ren_matriz((std::istream_iterator<int>(flujo_linea_archivo)),
-                                    std::istream_iterator<int>());
-        matriz.push_back(ren_matriz);
+                                    std::istream_iterator<int>());  // lee todos los números del renglón
+        matriz.push_back(ren_matriz);   // mete el renglón al final de la matriz
     }
 
     return matriz;
