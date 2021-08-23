@@ -29,26 +29,28 @@ void MontanteSolver::resolver() {
                 }
             }
         }
-        if (!pivote_es_cero) {
-            for (int indice_ren = 0; indice_ren < indice_pivote; ++indice_ren) {
-                for (int indice_col = indice_pivote + 1; indice_col < numero_renglones_matriz + 1; ++indice_col) {
-                    multiplicar_en_cruz(indice_pivote, indice_ren, indice_col);
-                }
+        if (pivote_es_cero) {
+            std::cout << "Solucion no unica";
+            return;
+        }
+        for (int indice_ren = 0; indice_ren < indice_pivote; ++indice_ren) {
+            for (int indice_col = indice_pivote + 1; indice_col < numero_renglones_matriz + 1; ++indice_col) {
+                multiplicar_en_cruz(indice_pivote, indice_ren, indice_col);
             }
-            for (int indice_ren = indice_pivote + 1; indice_ren < numero_renglones_matriz; ++indice_ren) {
-                for (int indice_col = indice_pivote + 1; indice_col < numero_renglones_matriz + 1; ++indice_col) {
-                    multiplicar_en_cruz(indice_pivote, indice_ren, indice_col);
-                }
+        }
+        for (int indice_ren = indice_pivote + 1; indice_ren < numero_renglones_matriz; ++indice_ren) {
+            for (int indice_col = indice_pivote + 1; indice_col < numero_renglones_matriz + 1; ++indice_col) {
+                multiplicar_en_cruz(indice_pivote, indice_ren, indice_col);
             }
-            for (int indice = 0; indice < indice_pivote; ++indice) {
-                matriz.at(indice).at(indice) = pivote_actual;
-            }
-            for (int indice_ren = 0; indice_ren < indice_pivote; ++indice_ren) {
-                matriz.at(indice_ren).at(indice_pivote) = 0;
-            }
-            for (int indice_ren = indice_pivote + 1; indice_ren < numero_renglones_matriz; ++indice_ren) {
-                matriz.at(indice_ren).at(indice_pivote) = 0;
-            }
+        }
+        for (int indice = 0; indice < indice_pivote; ++indice) {
+            matriz.at(indice).at(indice) = pivote_actual;
+        }
+        for (int indice_ren = 0; indice_ren < indice_pivote; ++indice_ren) {
+            matriz.at(indice_ren).at(indice_pivote) = 0;
+        }
+        for (int indice_ren = indice_pivote + 1; indice_ren < numero_renglones_matriz; ++indice_ren) {
+            matriz.at(indice_ren).at(indice_pivote) = 0;
         }
     }
     for (int i = 0; i < numero_renglones_matriz; ++i) {
@@ -63,7 +65,7 @@ void MontanteSolver::cambiar_ren(int a, int b) {
         matriz.at(a).at(i) = matriz.at(b).at(i);
         matriz.at(b).at(i) = temp;
     }
-    pivote_actual = matriz.at(b).at(b);
+    pivote_actual = matriz.at(a).at(a);
 }
 
 void MontanteSolver::multiplicar_en_cruz(int indice_pivote, int indice_ren, int indice_col) {
