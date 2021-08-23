@@ -4,6 +4,7 @@
 
 #include <sstream>
 #include <iterator>
+#include <iostream>
 
 #include "LectorMatriz.h"
 
