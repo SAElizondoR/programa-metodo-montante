@@ -10,13 +10,14 @@
 
 class VentanaPrincipal : public Gtk::ApplicationWindow {
 public:
-    VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType* objeto_c, Glib::RefPtr<Gtk::Builder>  refConstructor);
+    // VentanaPrincipal();
+    VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType* objeto_c, const Glib::RefPtr<Gtk::Builder>& constructor);
 
 protected:
     Glib::RefPtr<Gtk::Builder> constructor;
-    Gtk::Adjustment* ajuste_cant_ecuaciones;
-    std::vector<Gtk::HBox*> vector_cajas;
-    std::vector<std::vector<int>> a;
+    Gtk::ListBox* cuadro_lista;
+    Gtk::Grid* tabla;
+    Glib::RefPtr<Gtk::Adjustment> ajuste_cant_ecuaciones;
 
     void al_cambiar_valor_ajuste();
     static Glib::RefPtr<Gtk::Builder> crearConstructor();
