@@ -48,7 +48,34 @@
           </object>
         </child>
         <child>
-          <object class="GtkListBoxRow" id="CuadroListaFila3">
+          <object class="GtkListBoxRow" id="CuadroListaFila">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <child>
+              <object class="GtkLabel" id="Respuesta">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="label" translatable="yes">Respuesta: </property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow" id="CuadroListaFila4">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <child>
+              <object class="GtkButton" id="Resolver">
+                <property name="label" translatable="yes">Resolver</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkListBoxRow" id="CuadroListaFila5">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <child>
@@ -100,32 +127,5 @@
     <property name="can-focus">True</property>
     <property name="adjustment">AjusteNumeroCelda</property>
     <property name="numeric">True</property>
-  </object>
-  <object class="GtkBox" id="CajaHorizontal">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-  </object>
-  <object class="GtkBox" id="CajaVertical">
-    <property name="visible">True</property>
-    <property name="can-focus">False</property>
-    <property name="orientation">vertical</property>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
-    <child>
-      <placeholder/>
-    </child>
   </object>
 </interface>

@@ -11,7 +11,7 @@
 class MontanteSolver {
 public:
     explicit MontanteSolver(std::vector<std::vector<int>>& matriz);
-    void resolver();
+    std::vector<int> resolver();
 
 private:
     std::vector<std::vector<int>> matriz;

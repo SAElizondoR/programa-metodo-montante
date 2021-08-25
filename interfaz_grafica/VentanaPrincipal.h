@@ -18,9 +18,12 @@ protected:
     Gtk::ListBox* cuadro_lista;
     Gtk::Grid* tabla;
     Glib::RefPtr<Gtk::Adjustment> ajuste_cant_ecuaciones;
+    Glib::RefPtr<Gtk::Button> boton_resolver;
+    std::vector<std::vector<int>> matriz;
 
     void al_cambiar_valor_ajuste();
     static Glib::RefPtr<Gtk::Builder> crearConstructor();
+    void obtenerMatriz();
 };
 
 

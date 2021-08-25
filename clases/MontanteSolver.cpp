@@ -13,7 +13,7 @@ MontanteSolver::MontanteSolver(std::vector<std::vector<int>> &matriz) {
     pivote_actual = 1;
 }
 
-void MontanteSolver::resolver() {
+std::vector<int> MontanteSolver::resolver() {
     bool pivote_es_cero = false;
     for (int indice_pivote = 0; indice_pivote < numero_renglones_matriz; ++indice_pivote) {
         pivote_anterior = pivote_actual;
@@ -31,7 +31,7 @@ void MontanteSolver::resolver() {
         }
         if (pivote_es_cero) {
             std::cout << "Solucion no unica";
-            return;
+            return {};
         }
         for (int indice_ren = 0; indice_ren < indice_pivote; ++indice_ren) {
             for (int indice_col = indice_pivote + 1; indice_col < numero_renglones_matriz + 1; ++indice_col) {
@@ -53,9 +53,12 @@ void MontanteSolver::resolver() {
             matriz.at(indice_ren).at(indice_pivote) = 0;
         }
     }
+    std::vector<int> respuesta;
     for (int i = 0; i < numero_renglones_matriz; ++i) {
-        std::cout << matriz[i][numero_renglones_matriz] / matriz[i][i] << std::endl;
+        respuesta.push_back(matriz[i][numero_renglones_matriz] / matriz[i][i]);
     }
+
+    return respuesta;
 }
 
 void MontanteSolver::cambiar_ren(int a, int b) {
