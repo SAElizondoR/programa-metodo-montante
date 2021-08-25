@@ -1,9 +1,16 @@
-#include <iostream>
+#include <gtkmm/application.h>
 
-#include "clases/LectorMatriz.h"
+
+#include "interfaz_grafica/VentanaPrincipal.h"
 
 int main() {
-    std::string ruta;
+    Glib::RefPtr<Gtk::Application> ap = Gtk::Application::create("an_num.programa_montante");
+    Glib::RefPtr<Gtk::Builder> constructor = Gtk::Builder::create_from_file("../interfaz_grafica.glade");
+    VentanaPrincipal* ventana_principal = nullptr;
+    constructor->get_widget_derived("VentanaPrincipal", ventana_principal);
+    return ap->run(*ventana_principal);
+
+    /* std::string ruta;
     char sn; // recibe respuesta sí o no.
     do {
         std::cout << "Introduzca la ruta del archivo: ";
@@ -15,5 +22,5 @@ int main() {
         std::cin >> sn;
     }while(sn != 'n');
 
-    return 0;
+    return 0; */
 }
