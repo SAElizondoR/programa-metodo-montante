@@ -1,29 +1,26 @@
-#include <iostream>
+#include <gtkmm/application.h>
 
-#include "clases/LectorMatriz.h"
-#include "clases/MontanteSolver.h"
+
+#include "interfaz_grafica/VentanaPrincipal.h"
 
 int main() {
-    std::string ruta;
+    Glib::RefPtr<Gtk::Application> ap = Gtk::Application::create("an_num.programa_montante");
+    Glib::RefPtr<Gtk::Builder> constructor = Gtk::Builder::create_from_file("../interfaz_grafica.glade");
+    VentanaPrincipal* ventana_principal = nullptr;
+    constructor->get_widget_derived("VentanaPrincipal", ventana_principal);
+    return ap->run(*ventana_principal);
+
+    /* std::string ruta;
     char sn; // recibe respuesta sí o no.
     do {
         std::cout << "Introduzca la ruta del archivo: ";
         std::cin >> ruta;
         LectorMatriz lectorMatriz(ruta);
-        std::vector<std::vector<int>> matriz = lectorMatriz.leerMatriz();
-        MontanteSolver solucionador = MontanteSolver(matriz);
-        solucionador.resolver();
-
-        /* for (int i = 0; i < 2; ++i) {
-            std::cout << std::endl;
-            for (int j = 0; j < 3; ++j) {
-                std::cout << matriz.at(i).at(j) << " ";
-            }
-        } */
+        lectorMatriz.leerMatriz();
 
         std::cout << std::endl << "¿Desea probar otro archivo? [S/n] ";
         std::cin >> sn;
     }while(sn != 'n');
 
-    return 0;
+    return 0; */
 }
