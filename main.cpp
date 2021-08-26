@@ -1,29 +1,18 @@
-#include <iostream>
+#include <gtkmm/application.h>
 
-#include "clases/LectorMatriz.h"
-#include "clases/MontanteSolver.h"
 
+#include "interfaz_grafica/VentanaPrincipal.h"
+
+// Método principal
 int main() {
-    std::string ruta;
-    char sn; // recibe respuesta sí o no.
-    do {
-        std::cout << "Introduzca la ruta del archivo: ";
-        std::cin >> ruta;
-        LectorMatriz lectorMatriz(ruta);
-        std::vector<std::vector<int>> matriz = lectorMatriz.leerMatriz();
-        MontanteSolver solucionador = MontanteSolver(matriz);
-        solucionador.resolver();
+    Glib::RefPtr<Gtk::Application> ap = Gtk::Application::create("an_num.programa_montante");
+    Glib::RefPtr<Gtk::Builder> constructor = Gtk::Builder::create_from_file("../interfaz_grafica.glade");
+    VentanaPrincipal* ventana_principal = nullptr;
 
-        /* for (int i = 0; i < 2; ++i) {
-            std::cout << std::endl;
-            for (int j = 0; j < 3; ++j) {
-                std::cout << matriz.at(i).at(j) << " ";
-            }
-        } */
-
-        std::cout << std::endl << "¿Desea probar otro archivo? [S/n] ";
-        std::cin >> sn;
-    }while(sn != 'n');
-
-    return 0;
+    // trae la composición de la ventana principal del archivo de Glade
+    constructor->get_widget_derived("VentanaPrincipal", ventana_principal);
+    // cuando se cierra se libera la memoria de la ventana principal
+    ventana_principal->signal_hide().connect([&ventana_principal] () {delete ventana_principal;});
+    //termina el programa cuando se seleccione la X
+    return ap->run(*ventana_principal);
 }
