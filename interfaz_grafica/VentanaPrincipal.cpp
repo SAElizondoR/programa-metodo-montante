@@ -30,9 +30,7 @@ VentanaPrincipal::VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType *objet
 }
 
 void VentanaPrincipal::cambiar_valor_ajuste() {
-    Gtk::Grid* tabla_anterior = dynamic_cast<Gtk::Grid *>(lista_cuadros->get_children().back());
-    lista_cuadros->remove(*tabla_anterior);   // borrar la tabla anterior
-    delete(tabla_anterior); // liberar memoria
+    lista_cuadros->remove(*lista_cuadros->get_children().back());   // borrar la tabla anterior
     tabla = new Gtk::Grid();
     int cant_ecuaciones = int(ajuste_cant_ecuaciones->get_value()); // obtener nuevo número de ecuaciones
     // insertar 2 * n + 1 columnas (n + 1 para las entradas, n para los separadores)
