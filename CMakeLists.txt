@@ -9,7 +9,7 @@ pkg_check_modules(GTKMM gtkmm-3.0)
 link_directories(${GTKMM_LIBRARY_DIRS})
 include_directories(${GTKMM_INCLUDE_DIRS})
 
-add_executable(programa_metodo_montante main.cpp clases/LectorMatriz.cpp clases/LectorMatriz.h
+add_executable(programa_metodo_montante main.cpp
         clases/MontanteSolver.h clases/MontanteSolver.cpp
         interfaz_grafica/VentanaPrincipal.cpp interfaz_grafica/VentanaPrincipal.h)
 

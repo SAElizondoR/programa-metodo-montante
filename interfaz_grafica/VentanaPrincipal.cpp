@@ -8,10 +8,8 @@
 #include <iostream>
 
 
-/*VentanaPrincipal::VentanaPrincipal() :
-constructor{Gtk::Builder::create_from_file("../interfaz_grafica.glade")} {
-    construir();
-}*/
+VentanaPrincipal::VentanaPrincipal() : VentanaPrincipal(new Gtk::ApplicationWindow::BaseObjectType(),
+                                                        Glib::RefPtr<Gtk::Builder>()) { }
 
 VentanaPrincipal::VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType *objeto_c,
                                    const Glib::RefPtr<Gtk::Builder>& constructor)
@@ -23,12 +21,12 @@ VentanaPrincipal::VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType *objet
     ajuste_cant_ecuaciones = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
             constructor->get_object("AjusteCantEcuaciones"));
     al_cambiar_valor_ajuste();
-    boton_resolver = Glib::RefPtr<Gtk::Button>::cast_dynamic(
+    btn_resolver = Glib::RefPtr<Gtk::Button>::cast_dynamic(
             constructor->get_object("Resolver"));
 
     ajuste_cant_ecuaciones->signal_value_changed().connect(sigc::mem_fun(*this,
                                                                          &VentanaPrincipal::al_cambiar_valor_ajuste));
-    boton_resolver->signal_clicked().connect(sigc::mem_fun(*this, &VentanaPrincipal::obtenerMatriz));
+    btn_resolver->signal_clicked().connect(sigc::mem_fun(*this, &VentanaPrincipal::obtenerMatriz));
 }
 
 void VentanaPrincipal::al_cambiar_valor_ajuste() {

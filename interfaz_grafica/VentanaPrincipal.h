@@ -10,15 +10,15 @@
 
 class VentanaPrincipal : public Gtk::ApplicationWindow {
 public:
-    // VentanaPrincipal();
+    VentanaPrincipal();
     VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType* objeto_c, const Glib::RefPtr<Gtk::Builder>& constructor);
 
 protected:
-    Glib::RefPtr<Gtk::Builder> constructor;
+    [[maybe_unused]] Glib::RefPtr<Gtk::Builder> constructor;
     Gtk::ListBox* cuadro_lista;
     Gtk::Grid* tabla;
     Glib::RefPtr<Gtk::Adjustment> ajuste_cant_ecuaciones;
-    Glib::RefPtr<Gtk::Button> boton_resolver;
+    Glib::RefPtr<Gtk::Button> btn_resolver;
     std::vector<std::vector<int>> matriz;
 
     void al_cambiar_valor_ajuste();
