@@ -6,20 +6,26 @@
 #define PROGRAMA_METODO_MONTANTE_MONTANTESOLVER_H
 
 
+// poder construir vectores
 #include <vector>
 
 class MontanteSolver {
 public:
-    explicit MontanteSolver(std::vector<std::vector<int>>& matriz);
-    std::vector<int> resolver();
+    // constructor MontanteSolver que recibe un vector de flotantes “matriz”
+    explicit MontanteSolver(std::vector<std::vector<float>> &matriz);
+    // método resolver
+    std::vector<float> resolver();
 
 private:
-    std::vector<std::vector<int>> matriz;
+    // declaración de atributos
+    std::vector<std::vector<float>> matriz;
     int numero_renglones_matriz;
-    int pivote_anterior;
-    int pivote_actual;
+    float pivote_anterior;
+    float pivote_actual;
 
+    // método cambiar renglón
     void cambiar_ren(int a, int b);
+    // método para multiplicar en cruz
     void multiplicar_en_cruz(int indice_pivote, int indice_ren, int indice_columna);
 };
 
