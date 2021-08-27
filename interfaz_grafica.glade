@@ -119,7 +119,8 @@
   </object>
   <object class="GtkAdjustment" id="AjusteNumeroCelda">
     <property name="upper">10000</property>
-    <property name="step-increment">0.01</property>
+    <property name="lower">-10000</property>
+    <property name="step-increment">1</property>
     <property name="page-increment">10</property>
   </object>
   <object class="GtkSpinButton" id="NumeroCelda">

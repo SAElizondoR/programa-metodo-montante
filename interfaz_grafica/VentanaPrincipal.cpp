@@ -30,6 +30,15 @@ VentanaPrincipal::VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType *objet
 }
 
 void VentanaPrincipal::cambiar_valor_ajuste() {
+    auto etiqueta = Gtk::make_managed<Gtk::Label>();
+    etiqueta->set_text("Respuesta: ");
+    etiqueta->set_visible();
+    auto etiqueta_anterior = lista_cuadros->get_children().at(2);
+    // eliminar la respuesta anterior
+    lista_cuadros->remove(*etiqueta_anterior);
+    delete(etiqueta_anterior);
+    // insertar la nueva
+    lista_cuadros->insert(*etiqueta, 2);
     lista_cuadros->remove(*lista_cuadros->get_children().back());   // borrar la tabla anterior
     tabla = new Gtk::Grid();
     int cant_ecuaciones = int(ajuste_cant_ecuaciones->get_value()); // obtener nuevo número de ecuaciones
