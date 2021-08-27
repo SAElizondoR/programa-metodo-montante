@@ -6,24 +6,24 @@
 #include "VentanaPrincipal.h"
 
 VentanaPrincipal::VentanaPrincipal() : VentanaPrincipal(new Gtk::ApplicationWindow::BaseObjectType(),
-                                                        Glib::RefPtr<Gtk::Builder>()) { }
+            Glib::RefPtr<Gtk::Builder>()) { }
 
 VentanaPrincipal::VentanaPrincipal(Gtk::ApplicationWindow::BaseObjectType *objeto_c,
                                    const Glib::RefPtr<Gtk::Builder>& constructor)
-                                   : Gtk::ApplicationWindow(objeto_c),
-                                   constructor(constructor) {
+    : Gtk::ApplicationWindow(objeto_c),
+      constructor(constructor) {
     lista_cuadros = nullptr;
     tabla = nullptr;
     ajuste_cant_ecuaciones = Glib::RefPtr<Gtk::Adjustment>::cast_dynamic(
-            constructor->get_object("AjusteCantEcuaciones"));
+                                 constructor->get_object("AjusteCantEcuaciones"));
     btn_resolver = Glib::RefPtr<Gtk::Button>::cast_dynamic(
-            constructor->get_object("Resolver"));
+                       constructor->get_object("Resolver"));
 
     constructor->get_widget("CuadroLista", lista_cuadros);
     cambiar_valor_ajuste(); // se adapta el valor del ajuste una vez que se conoce
     // aplicar el método cambiar_valor_ajuste cuando este cambia
     ajuste_cant_ecuaciones->signal_value_changed().connect(sigc::mem_fun(*this,
-                                                                         &VentanaPrincipal::cambiar_valor_ajuste));
+            &VentanaPrincipal::cambiar_valor_ajuste));
     //utiliza el método de obtener_matriz de la clase VentanaPrincipal para leer desde la interfaz
     // se llena la matriz con los números que se leen
     btn_resolver->signal_clicked().connect(sigc::mem_fun(*this, &VentanaPrincipal::obtener_matriz));
@@ -72,7 +72,7 @@ void VentanaPrincipal::imprimir_btn_aumentar(int indice_ren, int indice_col) {
     Glib::RefPtr<Gtk::Builder> constructorCelda = crear_constructor();
     // trae el objeto de botón
     Glib::RefPtr<Gtk::SpinButton> btn = Glib::RefPtr<Gtk::SpinButton>::cast_dynamic(
-            constructorCelda->get_object("NumeroCelda"));
+                                            constructorCelda->get_object("NumeroCelda"));
     btn->unparent();    // elimina referencia a padre
     tabla->attach(*btn.operator->(), indice_col, indice_ren);   // se inserta en la tabla
 }
